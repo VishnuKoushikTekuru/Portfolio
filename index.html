@@ -134,6 +134,21 @@ section h2{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;margin-b
 .c-label{font-size:11px;color:var(--text3);text-transform:uppercase;font-weight:600}
 .c-val{font-size:13px;font-weight:500;margin-top:2px}
 
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;text-decoration:none;color:inherit;transition:all 0.25s;position:relative;overflow:hidden}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.cert-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 30px var(--glow)}
+.cert-card:hover::before{transform:scaleX(1)}
+.cert-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(124,110,240,0.2),rgba(167,139,250,0.1));border:1px solid rgba(124,110,240,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.cert-body{flex:1}
+.cert-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:4px}
+.cert-issuer{font-size:12px;color:var(--accent2);font-weight:500;margin-bottom:4px}
+.cert-date{font-size:11px;color:var(--text3);margin-bottom:8px}
+.cert-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:10px}
+.cert-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.cert-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--accent2);background:rgba(124,110,240,0.1);border:1px solid rgba(124,110,240,0.25);padding:4px 10px;border-radius:6px;transition:all 0.2s}
+.cert-link:hover{background:rgba(124,110,240,0.2);color:var(--accent2)}
+
 footer{text-align:center;padding:2.5rem;font-size:12px;color:var(--text3);border-top:1px solid var(--border)}
 footer span{color:var(--accent2);font-weight:500}
 
@@ -162,6 +177,7 @@ footer span{color:var(--accent2);font-weight:500}
     <a onclick="document.getElementById('s-projects').scrollIntoView({behavior:'smooth'})">Projects</a>
     <a onclick="document.getElementById('s-education').scrollIntoView({behavior:'smooth'})">Education</a>
     <a onclick="document.getElementById('s-work').scrollIntoView({behavior:'smooth'})">Experience</a>
+    <a onclick="document.getElementById('s-certs').scrollIntoView({behavior:'smooth'})">Certifications</a>
     <a onclick="document.getElementById('s-contact').scrollIntoView({behavior:'smooth'})">Contact</a>
   </div>
 </nav>
@@ -260,6 +276,26 @@ footer span{color:var(--accent2);font-weight:500}
   <div class="section-label">Where I have worked</div>
   <h2>Work History</h2>
   <div class="work-list" id="work-list"></div>
+</section>
+
+<section id="s-certs" class="fade-up">
+  <div class="section-label">Credentials &amp; training</div>
+  <h2>Certifications</h2>
+  <div class="cert-grid">
+    <a class="cert-card" href="https://www.theforage.com/completion-certificates/tMjbs76F526fF5v3G/NjynCWzGSaWXQCxSX_tMjbs76F526fF5v3G_699b343709815524df9d2582_1783871399248_completion_certificate.pdf" target="_blank" rel="noopener">
+      <div class="cert-icon">&#9992;</div>
+      <div class="cert-body">
+        <p class="cert-title">Data Science Job Simulation &mdash; British Airways</p>
+        <p class="cert-issuer">Forage &middot; British Airways</p>
+        <p class="cert-date">Issued July 2026</p>
+        <p class="cert-desc">Completed a virtual work experience programme focused on customer booking prediction and sentiment analysis. Built a Random Forest classifier with SHAP explainability, achieving 0.762 ROC-AUC and 2.8x top-decile lift. Identified a dataset quality issue and rebuilt the approach around independently verified assumptions.</p>
+        <div class="cert-tags">
+          <span class="tag">Random Forest</span><span class="tag">SHAP</span><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Permutation Importance</span>
+        </div>
+        <span class="cert-link">&#128196; View Certificate &#8594;</span>
+      </div>
+    </a>
+  </div>
 </section>
 
 <section id="s-contact" class="fade-up">
