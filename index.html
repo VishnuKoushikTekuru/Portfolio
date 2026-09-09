@@ -278,7 +278,7 @@ footer span{color:var(--accent2);font-weight:500}
   <div class="work-list" id="work-list"></div>
 </section>
 
-<section id="s-certs" class="fade-up">
+<section id="s-certs">
   <div class="section-label">Credentials &amp; training</div>
   <h2>Certifications</h2>
   <div class="cert-grid">
@@ -379,8 +379,10 @@ works.forEach(w=>{
 });
 
 // Scroll fade-up
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.08});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.01,rootMargin:"0px 0px -50px 0px"});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+// Fallback: make all sections visible after 2s in case observer misses any
+setTimeout(()=>{document.querySelectorAll('.fade-up').forEach(el=>el.classList.add('visible'))},2000);
 
 // 3D flip card — drag to tilt, click to spin
 (function initPhoto3D(){
