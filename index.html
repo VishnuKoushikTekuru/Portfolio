@@ -253,7 +253,10 @@ footer span{font-weight:500}
     <a id="nav-edu" onclick="scrollToId('s-education')">Education</a>
     <a id="nav-work" onclick="scrollToId('s-work')">Experience</a>
     <a onclick="scrollToId('s-contact')">Contact</a>
-    <a onclick="showLanding()" style="color:var(--text3);font-size:12px">&#8617; Switch</a>
+    <div style="display:flex;gap:6px;margin-left:8px">
+      <button id="nav-btn-ds" onclick="choosePF('ds')" style="padding:5px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(124,110,240,0.4);background:rgba(124,110,240,0.12);color:#a78bfa;transition:all .2s" onmouseover="this.style.background='rgba(124,110,240,0.25)'" onmouseout="updateNavBtns()">&#9679; Data Science</button>
+      <button id="nav-btn-bio" onclick="choosePF('bio')" style="padding:5px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);color:#34d399;transition:all .2s" onmouseover="this.style.background='rgba(16,185,129,0.2)'" onmouseout="updateNavBtns()">&#9632; Biotechnology</button>
+    </div>
   </div>
 </nav>
 
@@ -560,10 +563,28 @@ function showLanding() {
   window.scrollTo({top:0});
 }
 
+function updateNavBtns() {
+  const ds  = document.getElementById('nav-btn-ds');
+  const bio = document.getElementById('nav-btn-bio');
+  if (!ds || !bio) return;
+  if (currentTab === 'ds') {
+    ds.style.background  = 'rgba(124,110,240,0.3)';
+    ds.style.borderColor = '#a78bfa';
+    bio.style.background  = 'rgba(16,185,129,0.08)';
+    bio.style.borderColor = 'rgba(16,185,129,0.4)';
+  } else {
+    bio.style.background  = 'rgba(16,185,129,0.25)';
+    bio.style.borderColor = '#34d399';
+    ds.style.background  = 'rgba(124,110,240,0.12)';
+    ds.style.borderColor = 'rgba(124,110,240,0.4)';
+  }
+}
+
 function switchTab(tab) {
   document.getElementById('panel-ds').style.display  = tab === 'ds'  ? 'block' : 'none';
   document.getElementById('panel-bio').style.display = tab === 'bio' ? 'block' : 'none';
   currentTab = tab;
+  updateNavBtns();
   window.scrollTo({top:0, behavior:'smooth'});
   setTimeout(() => {
     document.querySelectorAll('#panel-' + tab + ' .fade-up').forEach(el => obs && obs.observe(el));
